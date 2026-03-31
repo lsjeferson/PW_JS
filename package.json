@@ -1,0 +1,27 @@
+{
+  "name": "playwright-js-automation",
+  "version": "1.0.0",
+  "description": "Estrutura base de automação com Playwright + JavaScript usando Page Objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test tests/ui",
+    "test:api": "playwright test tests/api",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "javascript",
+    "page-object-model"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}
