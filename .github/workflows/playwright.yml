@@ -1,0 +1,45 @@
+name: Playwright Tests
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Executar testes Playwright
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v5
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Ajustar permissão do Playwright
+        run: chmod +x node_modules/.bin/playwright
+
+      - name: Instalar browsers do Playwright
+        run: npx playwright install --with-deps
+
+      - name: Executar testes
+        run: npm run test:ci:json
+
+      - name: Salvar relatório e artefatos
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            playwright-report/
+            test-results/
+            artifacts/raw/
+            artifacts/test-execution/
+          retention-days: 30
