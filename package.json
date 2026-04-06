@@ -8,6 +8,9 @@
     "test:ui": "playwright test tests/ui",
     "test:api": "playwright test tests/api",
     "test:headed": "playwright test --headed",
+    "test:raw": "playwright test",
+    "test:consolidate": "node scripts/build-playwright-execution-report.js",
+    "test:ci:json": "node scripts/run-playwright-with-json.js",
     "report": "playwright show-report"
   },
   "keywords": [

@@ -7,7 +7,12 @@ module.exports = defineConfig({
   expect: {
     timeout: 10 * 1000,
   },
-  reporter: [['list'], ['html', { open: 'never' }]],
+  // Mantém reporters existentes e adiciona JSON bruto para consolidação.
+  reporter: [
+    ['list'],
+    ['html', { open: 'never' }],
+    ['json', { outputFile: 'artifacts/raw/playwright-report.json' }],
+  ],
   use: {
     headless: true,
     viewport: { width: 1366, height: 768 },
