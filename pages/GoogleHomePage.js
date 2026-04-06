@@ -2,6 +2,7 @@ class GoogleHomePage {
   /**
    * @param {import('@playwright/test').Page} page
    */
+  
   constructor(page) {
     this.page = page;
     this.searchInput = page.locator('textarea[name="q"]');
